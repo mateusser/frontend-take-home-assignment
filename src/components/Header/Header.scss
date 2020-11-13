@@ -1,0 +1,18 @@
+@import 'src/styles/_variables.scss';
+
+.Header {
+  background-color: #FFFFFF;
+  padding: 16px;
+
+  &__logo {
+    height: 24px;
+  }
+
+  @media screen and (min-width: $breakpoint) {
+    padding: 24px 56px;
+
+    &__logo {
+      height: 32px;
+    }
+  }
+}

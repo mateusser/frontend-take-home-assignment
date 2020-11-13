@@ -1,7 +1,10 @@
 import * as React from 'react';
+import { Header } from './components';
+
+import '~/styles/global.scss';
 
 const App: React.FunctionComponent = () => {
-  return <div>Origin Frontend Take Home</div>;
+  return <Header />;
 };
 
 export default App;
