@@ -9,4 +9,4 @@ const Header = (): JSX.Element => (
   </header>
 );
 
-export { Header };
+export default Header;

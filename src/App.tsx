@@ -1,7 +1,13 @@
 import * as React from 'react';
-import { Header, SavingGoal } from './components';
+
+// COMPONENTS
+import Header from './components/Header';
+import SavingGoal from './components/SavingGoal';
+
+// ASSETS
 import HouseIcon from '~/assets/icons/house.svg';
 
+// STYLES
 import '~/styles/global.scss';
 import './App.scss';
 

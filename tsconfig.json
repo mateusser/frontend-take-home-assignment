@@ -3,6 +3,7 @@
     "allowJs": true,
     "baseUrl": ".",
     "checkJs": false,
+    "esModuleInterop": true,
     "jsx": "react",
     "module": "commonjs",
     "noImplicitAny": true,

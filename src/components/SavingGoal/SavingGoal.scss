@@ -20,84 +20,90 @@
     margin-right: 16px;
   }
 
-  &__form {
-    padding: 24px;
+  &__header {
+    width: 100%;
+    padding: 24px 24px 16px;
+    display: flex;
+    align-items: center;
 
     @media screen and (min-width: $breakpoint) {
-      padding: 32px 40px;
+      padding: 32px 40px 24px;
     }
 
-    &Header {
+    &Text {
       display: flex;
-      align-items: center;
+      flex-direction: column;
 
-      &Text {
-        display: flex;
-        flex-direction: column;
+      &--heading {
+        @include typography(heading-small, 500);
 
-        &--heading {
-          @include typography(heading-small, 500);
+        font-family: $font-secondary;
+        line-height: 120%;
+        margin-bottom: 4px;
+      }
 
-          font-family: $font-secondary;
-          line-height: 120%;
-          margin-bottom: 4px;
-        }
+      &--paragraph {
+        @include typography(paragraph);
 
-        &--paragraph {
-          @include typography(paragraph);
-
-          color: $color-blue-gray-400;
-          line-height: 120%;
-        }
+        color: $color-blue-gray-400;
+        line-height: 120%;
       }
     }
+  }
 
-    &Info {
-      border-radius: 8px;
-      border: 1px solid $color-blue-gray-50;
-      margin: 8px 0;
+  &__form {
+    width: 100%;
+    padding: 0 24px 24px;
 
+    @media screen and (min-width: $breakpoint) {
+      padding: 0 40px 24px;
+    }
+  }
+
+  &__monthly {
+    border-radius: 8px;
+    border: 1px solid $color-blue-gray-50;
+    margin: 0 24px 32px;
+
+    @media screen and (min-width: $breakpoint) {
+      margin: 0 40px 32px;
+    }
+
+    &Amount {
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
 
       @media screen and (min-width: $breakpoint) {
-        margin-bottom: 8px;
+        padding: 24px 32px 16px;
       }
 
-      &Amount {
-        padding: 24px;
-        display: flex;
-        justify-content: space-between;
-
-        @media screen and (min-width: $breakpoint) {
-          padding: 24px 32px 16px;
-        }
-
-        &--subtitle {
-          @include typography(subtitle);
-        }
-
-        &--heading {
-          @include typography(heading, 500);
-
-          font-family: $font-secondary;
-          color: $color-brand-secondary;
-        }
+      &--subtitle {
+        @include typography(subtitle);
       }
 
-      &Deposits {
-        background-color: $color-blue-gray-10;
-        padding: 24px 32px;
+      &--heading {
+        @include typography(heading, 500);
 
-
-        &--caption {
-          @include typography(caption);
-
-          &Bold {
-            font-weight: $font-weight-bold;
-          }
-        }
+        font-family: $font-secondary;
+        color: $color-brand-secondary;
       }
-
     }
+
+    &Deposits {
+      background-color: $color-blue-gray-10;
+      padding: 24px 32px;
+
+
+      &--caption {
+        @include typography(caption);
+
+        &Bold {
+          font-weight: $font-weight-bold;
+        }
+      }
+    }
+
   }
 
   &__submitButton {

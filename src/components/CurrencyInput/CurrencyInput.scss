@@ -1,0 +1,30 @@
+@import 'src/styles/_typography.scss';
+@import 'src/styles/_variables.scss';
+
+.CurrencyInput {
+  @include typography(description);
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__input {
+    margin-top: 4px;
+    height: 56px;
+    padding-left: 44px;
+    border: 1px solid $color-blue-gray-50;
+    border-radius: 4px;
+
+    @include typography(heading-small, 500);
+    font-family: $font-secondary;
+    color: $color-blue-gray-600;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    bottom: 16px;
+    left: 12px;
+  }
+}
