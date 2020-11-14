@@ -8,7 +8,7 @@ import { CurrencyInputProps as Props } from './types';
 import './CurrencyInput.scss';
 
 const CurrencyInput = (props: Props): JSX.Element => {
-  const [amount, setAmount] = useState('0.00');
+  const [amount, setAmount] = useState(props.startAmount);
 
   return (
     <label className="CurrencyInput">
@@ -22,7 +22,7 @@ const CurrencyInput = (props: Props): JSX.Element => {
           floatValue: number
         ): void => {
           setAmount(maskedValue);
-          props.onChange(floatValue);
+          props.onChange(floatValue, maskedValue);
         }}
         value={amount}
       />

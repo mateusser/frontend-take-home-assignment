@@ -1,28 +1,22 @@
 import React, { Component } from 'react';
-import add from 'date-fns/add';
-import format from 'date-fns/format';
+import { add, format, isSameMonth } from 'date-fns';
 
 import ChevronLeft from '~/assets/icons/chevron-left.svg';
 import ChevronRight from '~/assets/icons/chevron-right.svg';
 
-import { DateInputState as State } from './types';
+import { DateInputProps as Props, DateInputState as State } from './types';
 
 import './DateInput.scss';
-import { isSameMonth } from 'date-fns';
 
-class DateInput extends Component<{}, State> {
+class DateInput extends Component<Props, State> {
   private _nextMonth: Date;
 
-  constructor(props: {}) {
+  constructor(props: Props) {
     super(props);
 
-    const today = new Date();
-    const nextMonth = add(today, { months: 1 });
-    this._nextMonth = new Date(nextMonth);
+    this._nextMonth = add(new Date(), { months: 1 });
 
-    this.state = {
-      date: nextMonth
-    };
+    this.state = { date: props.startDate };
   }
 
   public componentDidMount(): void {
@@ -65,7 +59,8 @@ class DateInput extends Component<{}, State> {
   }
 
   private _addMonth = (value: number) => {
-    this.setState({ date: add(this.state.date, { months: value }) });
+    const date = add(this.state.date, { months: value });
+    this.setState({ date }, (): void => this.props.onChange(date));
   };
 
   private _handleKeyPress = (event: KeyboardEvent) => {

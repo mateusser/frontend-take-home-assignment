@@ -1,4 +1,5 @@
-import React, { FormEvent } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
+import { add, differenceInCalendarMonths, format } from 'date-fns';
 
 import CurrencyInput from '~components/CurrencyInput';
 import DateInput from '~components/DateInput';
@@ -9,6 +10,17 @@ import './SavingGoal.scss';
 
 const SavingGoal = (props: Props): JSX.Element => {
   const { icon: Icon, name } = props;
+
+  const [monthlyAmount, setMonthlyAmount] = useState(0);
+  const [amountNumber, setAmountNumber] = useState(0);
+  const [amountString, setAmountString] = useState(amountNumber.toString());
+  const [date, setDate] = useState(add(new Date(), { months: 1 }));
+
+  const months = differenceInCalendarMonths(date, new Date());
+
+  useEffect((): void => {
+    setMonthlyAmount(Math.ceil(amountNumber / months));
+  }, [amountNumber, months]);
 
   return (
     <div className="SavingGoal">
@@ -27,34 +39,45 @@ const SavingGoal = (props: Props): JSX.Element => {
           onSubmit={(e: FormEvent): void => e.preventDefault()}
         >
           <CurrencyInput
-            onChange={(value: number): void => console.log(value)}
+            onChange={(amountNumber: number, amountString: string): void => {
+              setAmountNumber(amountNumber);
+              setAmountString(amountString);
+            }}
+            startAmount={amountString}
           />
-          <DateInput />
+          <DateInput
+            onChange={(value: Date): void => setDate(value)}
+            startDate={date}
+          />
         </form>
-      </main>
 
-      <footer className="SavingGoal__monthly">
-        <section className="SavingGoal__monthlyAmount">
-          <p className="SavingGoal__monthlyAmount--subtitle">Monthly amount</p>
-          <h4 className="SavingGoal__monthlyAmount--heading">$521</h4>
-        </section>
-        <section className="SavingGoal__monthlyDeposits">
-          <p className="SavingGoal__monthlyDeposits--caption">
-            You&apos;re planning{' '}
-            <span className="SavingGoal__monthlyDeposits--captionBold">
-              48 monthly deposits{' '}
-            </span>
-            to reach your{' '}
-            <span className="SavingGoal__monthlyDeposits--captionBold">
-              $25,000{' '}
-            </span>
-            goal by{' '}
-            <span className="SavingGoal__monthlyDeposits--captionBold">
-              October 2020.
-            </span>
-          </p>
-        </section>
-      </footer>
+        <div className="SavingGoal__monthly">
+          <section className="SavingGoal__monthlyAmount">
+            <p className="SavingGoal__monthlyAmount--subtitle">
+              Monthly amount
+            </p>
+            <h4 className="SavingGoal__monthlyAmount--heading">
+              ${new Intl.NumberFormat('en-US').format(monthlyAmount)}
+            </h4>
+          </section>
+          <section className="SavingGoal__monthlyDeposits">
+            <p className="SavingGoal__monthlyDeposits--caption">
+              You&apos;re planning{' '}
+              <span className="SavingGoal__monthlyDeposits--captionBold">
+                {months} monthly deposit{months > 1 && 's'}{' '}
+              </span>
+              to reach your{' '}
+              <span className="SavingGoal__monthlyDeposits--captionBold">
+                ${amountString}{' '}
+              </span>
+              goal by{' '}
+              <span className="SavingGoal__monthlyDeposits--captionBold">
+                {format(date, 'MMMM yyyy')}.
+              </span>
+            </p>
+          </section>
+        </div>
+      </main>
 
       <button
         className="SavingGoal__submitButton"
