@@ -1,0 +1,54 @@
+@import "variables";
+
+$font-sizes-desktop: (
+  button: 16px,
+  caption: 12px,
+  description: 14px,
+  heading-small: 24px,
+  heading: 32px,
+  paragraph: 16px,
+  subtitle: 20px,
+);
+
+$font-sizes-mobile: (
+  button: 16px, // 125%
+  caption: 12px, // 133%
+  description: 12px, // 150%
+  heading-small: 20px, // 120%
+  heading-medium: 24px, // 120%
+  paragraph: 14px, // 150%
+  subtitle: 18px, // 120%
+);
+
+$line-heights: (
+  button: 125%,
+  caption: 133%,
+  description: 150%,
+  heading-small: 120%,
+  heading-medium: 120%,
+  paragraph: 150%,
+  subtitle: 120%
+);
+
+@mixin typography($type: null, $weight: null) {
+  $font-size: 16px;
+  $line-height: 120%;
+
+  @if $type {
+    $font-size: map-get($font-sizes-mobile, $type);
+    $line-height: map-get($line-heights, $type);
+    @media screen and (min-width: $breakpoint) {
+      $font-size: map-get($font-sizes-desktop, $type);
+    }
+  }
+
+  $font-weight: 400;
+
+  @if $weight {
+    $font-weight: $weight;
+  }
+
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $line-height;
+}

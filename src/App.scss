@@ -1,0 +1,16 @@
+@import 'src/styles/_typography.scss';
+@import 'src/styles/_variables.scss';
+
+.App {
+  &__paragraph {
+    padding: 24px 0;
+    text-align: center;
+    color: $color-brand-primary;
+
+    @include typography(subtitle);
+
+    &--bold {
+      font-weight: $font-weight-bold;
+    }
+  }
+}
