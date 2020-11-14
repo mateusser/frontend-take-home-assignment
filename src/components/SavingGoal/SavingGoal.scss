@@ -2,14 +2,14 @@
 @import 'src/styles/_variables.scss';
 
 .SavingGoal {
+  align-items: center;
   background-color: $color-neutral-white;
-  box-shadow: 0px 16px 32px rgba(30, 42, 50, 0.08);
   border-radius: 8px;
-  width: 100%;
-  margin: 0 auto;
+  box-shadow: 0px 16px 32px rgba(30, 42, 50, 0.08);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin: 0 auto;
+  width: 100%;
 
   @media screen and (min-width: $breakpoint) {
     max-width: 560px;
@@ -21,10 +21,10 @@
   }
 
   &__header {
-    width: 100%;
-    padding: 24px 24px 16px;
-    display: flex;
     align-items: center;
+    display: flex;
+    padding: 24px 24px 16px;
+    width: 100%;
 
     @media screen and (min-width: $breakpoint) {
       padding: 32px 40px 24px;
@@ -35,28 +35,38 @@
       flex-direction: column;
 
       &--heading {
-        @include typography(heading-small, 500);
-
         font-family: $font-secondary;
         line-height: 120%;
         margin-bottom: 4px;
+
+        @include typography(heading-small, 500);
       }
 
       &--paragraph {
-        @include typography(paragraph);
-
         color: $color-blue-gray-400;
         line-height: 120%;
+
+        @include typography(paragraph);
       }
     }
   }
 
-  &__form {
-    width: 100%;
+  &__main {
     padding: 0 24px 24px;
+    width: 100%;
 
     @media screen and (min-width: $breakpoint) {
       padding: 0 40px 24px;
+    }
+  }
+
+  &__form {
+    flex-direction: column;
+    display: flex;
+
+    @media screen and (min-width: $breakpoint) {
+      flex-direction: row;
+      justify-content: space-between;
     }
   }
 
@@ -70,9 +80,9 @@
     }
 
     &Amount {
-      padding: 24px;
       display: flex;
       justify-content: space-between;
+      padding: 24px;
 
       @media screen and (min-width: $breakpoint) {
         padding: 24px 32px 16px;
@@ -94,7 +104,6 @@
       background-color: $color-blue-gray-10;
       padding: 24px 32px;
 
-
       &--caption {
         @include typography(caption);
 
@@ -107,12 +116,12 @@
   }
 
   &__submitButton {
-    width: 320px;
-    margin: 0 auto 40px;
-    padding: 18px;
     background-color: $color-brand-primary;
     border-radius: 999px;
     color: $color-neutral-white;
+    margin: 0 auto 40px;
+    padding: 18px;
+    width: 320px;
 
     @include typography(button, $font-weight-bold);
 

@@ -1,6 +1,7 @@
 import React, { FormEvent } from 'react';
 
 import CurrencyInput from '~components/CurrencyInput';
+import DateInput from '~components/DateInput';
 
 import { SavingGoalProps as Props } from './types';
 
@@ -19,12 +20,16 @@ const SavingGoal = (props: Props): JSX.Element => {
         </div>
       </header>
 
-      <main className="SavingGoal__form">
+      <main className="SavingGoal__main">
         <form
+          className="SavingGoal__form"
           id="saving-goal"
           onSubmit={(e: FormEvent): void => e.preventDefault()}
         >
-          <CurrencyInput onChange={(value): void => console.log(value)} />
+          <CurrencyInput
+            onChange={(value: number): void => console.log(value)}
+          />
+          <DateInput />
         </form>
       </main>
 
