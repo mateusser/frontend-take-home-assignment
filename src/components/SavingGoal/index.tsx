@@ -1,39 +1,31 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import { add, differenceInCalendarMonths, format } from 'date-fns';
 
+// COMPONENTS
 import CurrencyInput from '~components/CurrencyInput';
 import DateInput from '~components/DateInput';
 
+// HELPERS
+import { numberToCurrencyString } from '~/helpers';
+
+// TYPES
 import { SavingGoalProps as Props } from './types';
 
+// STYLES
 import './SavingGoal.scss';
 
 const SavingGoal = (props: Props): JSX.Element => {
   const { icon: Icon, name } = props;
 
   const [monthlyAmount, setMonthlyAmount] = useState(0);
-  const [amountNumber, setAmountNumber] = useState(0);
-  const [amountString, setAmountString] = useState(amountNumber.toString());
+  const [amount, setAmount] = useState(0);
   const [date, setDate] = useState(add(new Date(), { months: 1 }));
 
   const months = differenceInCalendarMonths(date, new Date());
 
   useEffect((): void => {
-    setMonthlyAmount(amountNumber / months);
-  }, [amountNumber, months]);
-
-  let monthlyAmountString = new Intl.NumberFormat('en-US', {
-    maximumFractionDigits: 2
-  }).format(monthlyAmount);
-
-  // ensuring when there is a decimal it always two numbers
-  const [, decimal] = monthlyAmountString.split('.');
-  if (decimal && decimal.length === 1) {
-    monthlyAmountString = monthlyAmountString.padEnd(
-      monthlyAmountString.length + 1,
-      '0'
-    );
-  }
+    setMonthlyAmount(amount / months);
+  }, [amount, months]);
 
   return (
     <div className="SavingGoal">
@@ -52,11 +44,9 @@ const SavingGoal = (props: Props): JSX.Element => {
           onSubmit={(e: FormEvent): void => e.preventDefault()}
         >
           <CurrencyInput
-            onChange={(amountNumber: number, amountString: string): void => {
-              setAmountNumber(amountNumber);
-              setAmountString(amountString);
+            onChange={(amount: number): void => {
+              setAmount(amount);
             }}
-            startAmount={amountString}
           />
           <DateInput
             onChange={(value: Date): void => setDate(value)}
@@ -70,7 +60,7 @@ const SavingGoal = (props: Props): JSX.Element => {
               Monthly amount
             </p>
             <h4 className="SavingGoal__monthlyAmount--heading">
-              ${monthlyAmountString}
+              ${numberToCurrencyString(monthlyAmount)}
             </h4>
           </section>
           <section className="SavingGoal__monthlyDeposits">
@@ -81,7 +71,7 @@ const SavingGoal = (props: Props): JSX.Element => {
               </span>
               to reach your{' '}
               <span className="SavingGoal__monthlyDeposits--captionBold">
-                ${amountString}{' '}
+                ${numberToCurrencyString(amount)}{' '}
               </span>
               goal by{' '}
               <span className="SavingGoal__monthlyDeposits--captionBold">

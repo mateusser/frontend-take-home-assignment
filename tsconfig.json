@@ -9,12 +9,10 @@
     "noImplicitAny": true,
     "outDir": "./dist/",
     "paths": {
-      "~*": ["./src/*"],
-      "@icons/*": ["./src/assets/icons/*"],
-      "@icons": ["./src/assets/icons"]
+      "~*": ["./src/*"]
     },
     "sourceMap": true,
-    "target": "es6",
+    "target": "es6"
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*"]
 }

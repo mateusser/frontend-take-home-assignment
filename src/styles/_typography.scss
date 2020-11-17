@@ -35,11 +35,10 @@ $line-heights: (
   @media screen and (min-width: $breakpoint) {
     font-size: map-get($font-sizes-desktop, $type);
   }
-  $line-height: map-get($line-heights, $type);
-  line-height: $line-height;
+
+  line-height: map-get($line-heights, $type);
 
   $font-weight: $font-weight-normal;
-
   @if $weight {
     $font-weight: $weight;
   }

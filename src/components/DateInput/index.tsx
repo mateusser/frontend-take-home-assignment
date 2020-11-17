@@ -60,7 +60,10 @@ class DateInput extends Component<Props, State> {
 
   private _addMonth = (value: number) => {
     const date = add(this.state.date, { months: value });
-    this.setState({ date }, (): void => this.props.onChange(date));
+    this.setState(
+      { date },
+      (): void => this.props.onChange && this.props.onChange(date)
+    );
   };
 
   private _handleKeyPress = (event: KeyboardEvent) => {
