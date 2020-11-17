@@ -20,7 +20,7 @@
     font-family: $font-secondary;
     height: 56px;
     margin-top: $spacing-xs;
-    padding-left: 44px;
+    padding: $spacing-md $spacing-md $spacing-md 44px;
     width: 100%;
 
     @include typography(heading-small, 500);

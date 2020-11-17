@@ -4,6 +4,7 @@
 .DateInput {
   display: flex;
   flex-direction: column;
+  position: relative;
 
   @include typography(description);
 
@@ -51,6 +52,43 @@
 
     &--bold {
       font-weight: $font-weight-bold;
+    }
+  }
+
+  &__listItem {
+    margin: 2px;
+    padding: 4px;
+    justify-self: center;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $color-blue-gray-10;
+    }
+  }
+
+  &__popper {
+    align-items: center;
+    background-color: $color-neutral-white;
+    border-radius: 4px;
+    border: 1px solid $color-blue-gray-50;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(300, 1fr);
+    justify-content: space-between;
+    max-height: 320px;
+    overflow: scroll;
+    width: 100%;
+
+    @media screen and (min-width: 410px) {
+      grid-template-columns: 33% 34% 33%;
+    }
+
+    @media screen and (min-width: 500px) {
+      grid-template-columns: repeat(4, 25%);
+    }
+
+    @media screen and (min-width: $breakpoint) {
+      grid-template-columns: 50% 50%;
     }
   }
 }

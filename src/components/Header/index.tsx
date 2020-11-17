@@ -1,7 +1,8 @@
 import React from 'react';
+
 import OriginLogo from '~/assets/icons/logo.svg';
 
-import './Header.scss'
+import './Header.scss';
 
 const Header = (): JSX.Element => (
   <header className="Header">

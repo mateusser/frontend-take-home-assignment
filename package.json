@@ -4,11 +4,13 @@
   "description": "Origin Frontend Challenge",
   "main": "src/index.ts",
   "dependencies": {
+    "@popperjs/core": "^2.5.4",
     "@svgr/parcel-plugin-svgr": "^5.4.0",
     "acorn": "^7.4.1",
     "date-fns": "^2.16.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-popper": "^2.2.4",
     "react-text-mask": "^5.4.3",
     "text-mask-addons": "^3.8.0"
   },
