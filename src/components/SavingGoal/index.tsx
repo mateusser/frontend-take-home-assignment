@@ -19,8 +19,21 @@ const SavingGoal = (props: Props): JSX.Element => {
   const months = differenceInCalendarMonths(date, new Date());
 
   useEffect((): void => {
-    setMonthlyAmount(Math.ceil(amountNumber / months));
+    setMonthlyAmount(amountNumber / months);
   }, [amountNumber, months]);
+
+  let monthlyAmountString = new Intl.NumberFormat('en-US', {
+    maximumFractionDigits: 2
+  }).format(monthlyAmount);
+
+  // ensuring when there is a decimal it always two numbers
+  const [, decimal] = monthlyAmountString.split('.');
+  if (decimal && decimal.length === 1) {
+    monthlyAmountString = monthlyAmountString.padEnd(
+      monthlyAmountString.length + 1,
+      '0'
+    );
+  }
 
   return (
     <div className="SavingGoal">
@@ -57,7 +70,7 @@ const SavingGoal = (props: Props): JSX.Element => {
               Monthly amount
             </p>
             <h4 className="SavingGoal__monthlyAmount--heading">
-              ${new Intl.NumberFormat('en-US').format(monthlyAmount)}
+              ${monthlyAmountString}
             </h4>
           </section>
           <section className="SavingGoal__monthlyDeposits">

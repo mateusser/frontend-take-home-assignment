@@ -7,17 +7,17 @@ $font-sizes-desktop: (
   heading-small: 24px,
   heading: 32px,
   paragraph: 16px,
-  subtitle: 20px,
+  subtitle: 20px
 );
 
 $font-sizes-mobile: (
-  button: 16px, // 125%
-  caption: 12px, // 133%
-  description: 12px, // 150%
-  heading-small: 20px, // 120%
-  heading-medium: 24px, // 120%
-  paragraph: 14px, // 150%
-  subtitle: 18px, // 120%
+  button: 16px,
+  caption: 12px,
+  description: 12px,
+  heading-small: 20px,
+  heading-medium: 24px,
+  paragraph: 14px,
+  subtitle: 18px
 );
 
 $line-heights: (
@@ -30,25 +30,19 @@ $line-heights: (
   subtitle: 120%
 );
 
-@mixin typography($type: null, $weight: null) {
-  $font-size: 16px;
-  $line-height: 120%;
-
-  @if $type {
-    $font-size: map-get($font-sizes-mobile, $type);
-    $line-height: map-get($line-heights, $type);
-    @media screen and (min-width: $breakpoint) {
-      $font-size: map-get($font-sizes-desktop, $type);
-    }
+@mixin typography($type: paragraph, $weight: null) {
+  font-size: map-get($font-sizes-mobile, $type);
+  @media screen and (min-width: $breakpoint) {
+    font-size: map-get($font-sizes-desktop, $type);
   }
+  $line-height: map-get($line-heights, $type);
+  line-height: $line-height;
 
-  $font-weight: 400;
+  $font-weight: $font-weight-normal;
 
   @if $weight {
     $font-weight: $weight;
   }
 
   font-weight: $font-weight;
-  font-size: $font-size;
-  line-height: $line-height;
 }

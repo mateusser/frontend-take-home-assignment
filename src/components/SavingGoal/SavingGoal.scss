@@ -76,6 +76,7 @@
     margin-top: 24px;
 
     &Amount {
+      align-items: center;
       display: flex;
       justify-content: space-between;
       padding: 24px;
@@ -115,9 +116,10 @@
     background-color: $color-brand-primary;
     border-radius: 999px;
     color: $color-neutral-white;
-    margin: 0 auto 40px;
+    margin: 0 20px 40px;
+    max-width: 320px;
     padding: 18px;
-    width: 320px;
+    width: 100%;
 
     @include typography(button, $font-weight-bold);
 
