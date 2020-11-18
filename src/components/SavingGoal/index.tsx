@@ -30,7 +30,7 @@ const SavingGoal = (props: Props): JSX.Element => {
   return (
     <div className="SavingGoal">
       <header className="SavingGoal__header">
-        <Icon className="SavingGoal__icon" />
+        {Icon && <Icon className="SavingGoal__icon" />}
         <div className="SavingGoal__headerText">
           <h4 className="SavingGoal__headerText--heading">{name}</h4>
           <p className="SavingGoal__headerText--paragraph">Saving goal</p>

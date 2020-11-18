@@ -35,7 +35,7 @@ const CurrencyInput = (props: Props): JSX.Element => {
           setAmount(stringValue);
 
           const floatValue = parseFloat(stringValue.replace(/,/gi, '')) || 0;
-          props.onChange(floatValue);
+          props.onChange && props.onChange(floatValue);
         }}
         type="tel" // workaround since type="number" has a known issue
         // https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#supported-input-types

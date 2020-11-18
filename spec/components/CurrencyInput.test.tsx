@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme';
 import CurrencyInput from '../../src/components/CurrencyInput';
 
 describe('CurrencyInput', () => {
-  // no need for more tests since it uses an already tested component
+  // no need for more tests since it uses an already tested component for mask
   it('renders', () => {
     const component = shallow(<CurrencyInput />);
 
