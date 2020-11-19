@@ -4,7 +4,7 @@
 .App {
   &__paragraph {
     color: $color-brand-primary;
-    padding: 24px 0;
+    padding: $spacing-lg 0;
     text-align: center;
 
     @include typography(subtitle);

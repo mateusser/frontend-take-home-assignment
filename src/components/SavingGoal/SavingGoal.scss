@@ -4,7 +4,7 @@
 .SavingGoal {
   align-items: center;
   background-color: $color-neutral-white;
-  border-radius: 8px;
+  border-radius: $spacing-sm;
   box-shadow: 0px 16px 32px rgba(30, 42, 50, 0.08);
   display: flex;
   flex-direction: column;
@@ -17,17 +17,17 @@
 
   &__icon {
     height: 64px;
-    margin-right: 16px;
+    margin-right: $spacing-md;
   }
 
   &__header {
     align-items: center;
     display: flex;
-    padding: 24px 24px 16px;
+    padding: $spacing-lg $spacing-lg $spacing-md;
     width: 100%;
 
     @media screen and (min-width: $breakpoint) {
-      padding: 32px 40px 24px;
+      padding: $spacing-xl 40px $spacing-lg;
     }
 
     &Text {
@@ -37,7 +37,7 @@
       &--heading {
         font-family: $font-secondary;
         line-height: 120%;
-        margin-bottom: 4px;
+        margin-bottom: $spacing-xs;
 
         @include typography(heading-small, 500);
       }
@@ -52,11 +52,11 @@
   }
 
   &__main {
-    padding: 0 24px 32px;
+    padding: 0 $spacing-lg $spacing-xl;
     width: 100%;
 
     @media screen and (min-width: $breakpoint) {
-      padding: 0 40px 32px;
+      padding: 0 40px $spacing-xl;
     }
   }
 
@@ -73,16 +73,16 @@
   &__monthly {
     border-radius: 8px;
     border: 1px solid $color-blue-gray-50;
-    margin-top: 24px;
+    margin-top: $spacing-lg;
 
     &Amount {
       align-items: center;
       display: flex;
       justify-content: space-between;
-      padding: 24px;
+      padding: $spacing-lg;
 
       @media screen and (min-width: $breakpoint) {
-        padding: 24px 32px 16px;
+        padding: $spacing-lg $spacing-xl $spacing-md;
       }
 
       &--subtitle {
@@ -99,7 +99,7 @@
 
     &Deposits {
       background-color: $color-blue-gray-10;
-      padding: 24px 32px;
+      padding: $spacing-lg $spacing-xl;
 
       &--caption {
         @include typography(caption);

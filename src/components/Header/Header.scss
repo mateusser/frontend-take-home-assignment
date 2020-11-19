@@ -2,16 +2,16 @@
 
 .Header {
   background-color: $color-neutral-white;
-  margin-bottom: 8px;
-  padding: 16px;
+  margin-bottom: $spacing-sm;
+  padding: $spacing-md;
 
   &__logo {
     height: 24px;
   }
 
   @media screen and (min-width: $breakpoint) {
-    margin-bottom: 24px;
-    padding: 24px 56px;
+    margin-bottom: $spacing-lg;
+    padding: $spacing-lg 56px;
 
     &__logo {
       height: 32px;

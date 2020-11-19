@@ -4,13 +4,13 @@
 .CurrencyInput {
   display: flex;
   flex-direction: column;
-  margin: 0 0 16px;
+  margin: 0 0 $spacing-md;
   position: relative;
 
   @include typography(description);
 
   @media screen and (min-width: $breakpoint) {
-    margin: 0 16px 0 0;
+    margin: 0 $spacing-md 0 0;
   }
 
   &__input {
@@ -19,7 +19,7 @@
     color: $color-blue-gray-600;
     font-family: $font-secondary;
     height: 56px;
-    margin-top: 4px;
+    margin-top: $spacing-xs;
     padding-left: 44px;
     width: 100%;
 
