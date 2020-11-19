@@ -1,0 +1,4 @@
+- Close on click outside popper
+- Add custom css for scroll
+- Create "DateInput__listItem--selected" class to current popper item, making it disabled and visible
+- On popper open, scroll to selected item
