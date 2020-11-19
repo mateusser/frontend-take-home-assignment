@@ -37,6 +37,12 @@ const CurrencyInput = (props: Props): JSX.Element => {
           const floatValue = parseFloat(stringValue.replace(/,/gi, '')) || 0;
           props.onChange && props.onChange(floatValue);
         }}
+        onFocus={() => {
+          // no padding left, so the user can start typing without deleting the zero
+          if (amount === '0') {
+            setAmount('');
+          }
+        }}
         type="tel" // workaround since type="number" has a known issue
         // https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#supported-input-types
         value={amount}
